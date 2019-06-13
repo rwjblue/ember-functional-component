@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import ApplicationInstance from '@ember/application/instance';
 import { setProperties } from '@ember/object';
+import { assign } from '@ember/polyfills';
 
 interface setComponentManager<T> {
   (managerFactory: (owner: ApplicationInstance) => unknown, baseClass: T): T
@@ -51,7 +52,7 @@ class FunctionalComponentManager {
   }
 
   createComponent(fn: FunctionalComponent, args: ComponentManagerArgs): CreateComponentResult {
-    let templateContext = fn(args.named);
+    let templateContext = assign({}, fn(args.named));
 
     return {
       fn,
@@ -66,24 +67,18 @@ class FunctionalComponentManager {
     setProperties(bucket.templateContext, updatedTemplateContext);
   }
 
-  destroyComponent(component: CreateComponentResult) {
-    //component.destroy();
-  }
+  destroyComponent(_bucket: CreateComponentResult) {}
 
   getContext(bucket: CreateComponentResult) {
     return bucket.templateContext;
   }
 
-  didCreateComponent(component: CreateComponentResult) {
-    //component.didInsertElement();
-  }
+  didCreateComponent(_bucket: CreateComponentResult) {}
 
-  didUpdateComponent(component: CreateComponentResult) {
-    //component.didUpdate();
-  }
+  didUpdateComponent(_bucket: CreateComponentResult) {}
 }
 
-export function createComponent<T>(callback: (props: T) => unknown) {
+export function createComponent(callback: FunctionalComponent) {
   setComponentManager((owner: ApplicationInstance) => FunctionalComponentManager.forOwner(owner), callback);
 
   return callback;
