@@ -1,6 +1,6 @@
 {
   "name": "ember-functional-component",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Use \"pure functions\" as components in an Ember app.",
   "keywords": [
     "ember-addon"
