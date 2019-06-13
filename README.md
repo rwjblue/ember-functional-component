@@ -32,6 +32,8 @@ export default createComponent(props => {
 })
 ```
 
+The function you provide will be called whenever the incoming arguments change.
+
 Contributing
 ------------------------------------------------------------------------------
 
