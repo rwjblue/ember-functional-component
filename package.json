@@ -1,13 +1,14 @@
 {
   "name": "ember-functional-component",
   "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "Use \"pure functions\" as components in an Ember app.",
   "keywords": [
     "ember-addon"
   ],
-  "repository": "",
+  "repository": "git@github.com:rwjblue/ember-functional-component.git",
   "license": "MIT",
-  "author": "",
+  "author": "Robert Jackson <me@rwjblue.com>",
+  "main": "index.js",
   "directories": {
     "doc": "doc",
     "test": "tests"
