@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import ApplicationInstance from '@ember/application/instance';
+import { setProperties } from '@ember/object';
 
 interface setComponentManager<T> {
   (managerFactory: (owner: ApplicationInstance) => unknown, baseClass: T): T
@@ -11,6 +12,7 @@ export interface ComponentManagerArgs {
 const setComponentManager = (Ember as any)._setComponentManager as setComponentManager<FunctionalComponent>;
 
 interface CreateComponentResult {
+  fn: FunctionalComponent;
   args: ComponentManagerArgs;
   templateContext: unknown;
 }
@@ -52,13 +54,16 @@ class FunctionalComponentManager {
     let templateContext = fn(args.named);
 
     return {
+      fn,
       args,
       templateContext,
     }
   }
 
-  updateComponent(component: CreateComponentResult, args: ComponentManagerArgs) {
-    //set(component, 'args', args.named);
+  updateComponent(bucket: CreateComponentResult, args: ComponentManagerArgs) {
+    let updatedTemplateContext = bucket.fn(args.named);
+
+    setProperties(bucket.templateContext, updatedTemplateContext);
   }
 
   destroyComponent(component: CreateComponentResult) {
