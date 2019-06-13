@@ -1,14 +1,13 @@
 ember-functional-component
 ==============================================================================
 
-[Short description of the addon.]
-
+Attempting to use "pure functions" as components. Partially inspired by [vuejs/rfcs#42](https://github.com/vuejs/rfcs/pull/42).
 
 Compatibility
 ------------------------------------------------------------------------------
 
-* Ember.js v2.18 or above
-* Ember CLI v2.13 or above
+* Ember.js v3.4 or above
+* Ember CLI v3.4 or above
 * Node.js v8 or above
 
 
@@ -23,8 +22,15 @@ ember install ember-functional-component
 Usage
 ------------------------------------------------------------------------------
 
-[Longer description of how to use the addon in apps.]
+```js
+import { createComponent } from 'ember-functional-components';
 
+export default createComponent(props => {
+  return {
+    fullName: `${props.first} ${props.last}`,
+  }
+})
+```
 
 Contributing
 ------------------------------------------------------------------------------
