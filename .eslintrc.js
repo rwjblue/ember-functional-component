@@ -9,17 +9,21 @@ module.exports = {
   plugins: [
     'ember',
     '@typescript-eslint',
+    'prettier',
   ],
   extends: [
     'eslint:recommended',
     'plugin:ember/recommended',
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
+    'prettier',
+    'prettier/@typescript-eslint',
   ],
   env: {
     browser: true
   },
   rules: {
+    "prettier/prettier": "error"
   },
   overrides: [
     // node files
