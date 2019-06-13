@@ -16,6 +16,7 @@
     "build": "ember build",
     "lint:hbs": "ember-template-lint .",
     "lint:js": "eslint --cache --ext js,ts .",
+    "lint:ts": "tsc -p tsconfig.json --noEmit",
     "prepublishOnly": "ember ts:precompile",
     "postpublish": "ember ts:clean",
     "start": "ember serve",
