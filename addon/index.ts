@@ -24,7 +24,7 @@ interface FunctionalComponent {
 const MANAGERS = new WeakMap<ApplicationInstance, FunctionalComponentManager>();
 
 class FunctionalComponentManager {
-  private owner: ApplicationInstance;
+  //private owner: ApplicationInstance;
   public capabilities: any;
 
 
@@ -41,8 +41,8 @@ class FunctionalComponentManager {
     return instance;
   }
 
-  constructor(owner: ApplicationInstance) {
-    this.owner = owner;
+  constructor(_owner: ApplicationInstance) {
+    //this.owner = owner;
 
     this.capabilities = (Ember as any)._componentManagerCapabilities('3.4', {
       destructor: true,
