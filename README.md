@@ -23,13 +23,17 @@ Usage
 ------------------------------------------------------------------------------
 
 ```js
-import { createComponent } from 'ember-functional-components';
+import { createComponent } from 'ember-functional-component';
 
 export default createComponent(props => {
   return {
     fullName: `${props.first} ${props.last}`,
   }
 })
+```
+
+```handlebars
+{{this.fullName}}
 ```
 
 The function you provide will be called whenever the incoming arguments change.
