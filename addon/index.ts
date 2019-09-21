@@ -105,14 +105,14 @@ class FunctionalComponentManager {
     };
 
     ctx[UpdateComponentSymbol] = function() {
-      setProperties(bucket.templateContext, bucket.fn(args.named));
+      setProperties(bucket.templateContext, bucket.fn(bucket.args.named));
     };
     return bucket;
   }
 
   updateComponent(bucket: CreateComponentResult, args: ComponentManagerArgs) {
-    let updatedTemplateContext = bucket.fn(args.named);
-    setProperties(bucket.templateContext, updatedTemplateContext);
+    bucket.args = args;
+    (bucket.templateContext as any)[UpdateComponentSymbol]();
   }
 
   destroyComponent(_bucket: CreateComponentResult) {}
